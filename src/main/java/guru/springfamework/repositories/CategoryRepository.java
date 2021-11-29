@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 // Category repository extends JPA repository (h2 in memory database)
 public interface CategoryRepository extends JpaRepository<Category, Long> {
+  // JPA Query method will help us do the implementation
+  Category findByName(String name);
 }
