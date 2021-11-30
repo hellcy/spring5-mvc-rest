@@ -64,6 +64,32 @@ public class CategoryControllerTest {
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.categories", hasSize(2)));
+
+    // result example
+    //    {
+    //      "categories": [
+    //        {
+    //          "id": 1,
+    //                "name": "Fruits"
+    //        },
+    //        {
+    //          "id": 2,
+    //                "name": "Dried"
+    //        },
+    //        {
+    //          "id": 3,
+    //                "name": "Fresh"
+    //        },
+    //        {
+    //          "id": 4,
+    //                "name": "Exotic"
+    //        },
+    //        {
+    //          "id": 5,
+    //                "name": "Nuts"
+    //        }
+    //      ]
+    //    }
   }
 
   @Test
@@ -81,5 +107,11 @@ public class CategoryControllerTest {
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.name", equalTo(NAME)));
+
+    // result example
+    //    {
+    //      "id": 4,
+    //            "name": "Exotic"
+    //    }
   }
 }
