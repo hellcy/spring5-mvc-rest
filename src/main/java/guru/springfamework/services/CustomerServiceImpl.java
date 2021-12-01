@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService {
                 customer.setLastname(customerDTO.getLastname());
               }
 
-              return customerMapper.customerToCustomerDTO(customerRepository.save(customer));
+              return saveOrUpdateCustomer(customer);
             })
             .orElseThrow(RuntimeException::new);
   }
