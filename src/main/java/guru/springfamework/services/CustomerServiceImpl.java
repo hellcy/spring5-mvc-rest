@@ -2,6 +2,7 @@ package guru.springfamework.services;
 
 import guru.springfamework.api.v1.mapper.CustomerMapper;
 import guru.springfamework.api.v1.model.CustomerDTO;
+import guru.springfamework.controllers.v1.CustomerController;
 import guru.springfamework.domain.Customer;
 import guru.springfamework.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
             .stream()
             .map(customer -> {
               CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
-              customerDTO.setCustomerUrl("/api/v1/customer/" + customer.getId());
+              customerDTO.setCustomerUrl(CustomerController.BASE_URL + "/" + customer.getId());
               return customerDTO;
             })
             .collect(Collectors.toList());
@@ -37,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
     return customerRepository.findById(id)
             .map(customer -> {
               CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
-              customerDTO.setCustomerUrl("/api/v1/customer/" + customer.getId());
+              customerDTO.setCustomerUrl(CustomerController.BASE_URL + "/" + customer.getId());
               return customerDTO;
             })
             .orElseThrow(RuntimeException::new); // todo implement better exception handling
@@ -84,7 +85,7 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerDTO savedCustomerDTO = customerMapper.customerToCustomerDTO(savedCustomer);
 
     // set customer url before return
-    savedCustomerDTO.setCustomerUrl("/api/v1/customer/" + savedCustomer.getId());
+    savedCustomerDTO.setCustomerUrl(CustomerController.BASE_URL + "/" + savedCustomer.getId());
     return savedCustomerDTO;
   }
 
