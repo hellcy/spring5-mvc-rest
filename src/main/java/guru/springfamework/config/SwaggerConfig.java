@@ -14,8 +14,8 @@ public class SwaggerConfig {
   @Bean
   public Docket api() {
     // this is the default Swagger configuration which will generate docs for all apis
-    // default url to api docs
-    // localhost:8080/v2/api-docs
+    // default url to api docs - localhost:8080/v2/api-docs
+    // Swagger UI - localhost:8080/swagger-ui.html
     return new Docket(DocumentationType.SWAGGER_2)
             .select()
             .apis(RequestHandlerSelectors.any())
